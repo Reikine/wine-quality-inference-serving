@@ -1,0 +1,42 @@
+services:
+  ml-app:
+    build: .
+    container_name: setyana-dev-mlops
+    ports:
+      - '8501:8501'
+      - '8500:8500'
+    volumes:
+      - ./config:/model_config
+      - ./output/serving_model:/serving_model
+    restart: always
+    networks:
+      - monitoring-net
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - monitoring-net
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - '3001:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - monitoring-net
+    restart: always
+
+volumes:
+  grafana-storage:
+
+networks:
+  monitoring-net:
+    driver: bridge

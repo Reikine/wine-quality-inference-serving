@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: "tf-serving"
+    scrape_interval: 15s
+    metrics_path: monitoring/prometheus/metrics
+    static_configs:
+      - targets: ['setyana-dev-mlops:8501']

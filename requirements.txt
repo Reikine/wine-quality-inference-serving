@@ -1,0 +1,6 @@
+tensorflow==2.10.1
+tfx==1.11.0
+keras-tuner==1.4.8
+tensorflow-model-analysis==0.42.0
+tensorflow-transform==1.11.0
+requests==2.32.5
