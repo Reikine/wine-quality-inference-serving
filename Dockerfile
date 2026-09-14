@@ -5,4 +5,4 @@ COPY ./config /model_config
 
 ENV MODEL_NAME=wine-quality-model
 
-CMD ["sh", "-c", "tensorflow_model_server --port=8500 --rest_api_port=${PORT} --rest_api_address=0.0.0.0 --model_name=${MODEL_NAME} --model_base_path=/models/${MODEL_NAME} --monitoring_config_file=/model_config/prometheus.config"]
+CMD ["sh", "-c", "tensorflow_model_server --port=8500 --rest_api_port=${PORT} --rest_api_address=0.0.0.0 --model_config_file=/model_config/models.config"]
