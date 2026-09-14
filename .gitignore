@@ -12,6 +12,8 @@ setyana-dev-testing.ipynb
 .sandbox/
 
 output/
+!output/serving_model/
+
 pipelines/
 
 *.log
